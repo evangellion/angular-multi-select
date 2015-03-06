@@ -60,7 +60,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
             disableProperty : '@',
             groupProperty   : '@',
             searchProperty  : '@',  // 3.0.0 - OK
-            maxHeight       : '@',            
+            maxHeight       : '@',
 
             // callbacks
             onClear         : '&',  // 3.0.0 - OK
@@ -91,6 +91,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
             $scope.tabIndex         = 0;            
             $scope.lang             = {};
             $scope.localModel       = [];
+            $scope.isOpen           = false;
 
             var 
                 prevTabIndex        = 0,
@@ -620,6 +621,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
                     // close callback
                     $timeout( function() {
+                        $scope.isOpen = false;
                         $scope.onClose();
                     }, 0 );
 
@@ -665,6 +667,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                     }                       
 
                     // open callback
+                    $scope.isOpen = true;
                     $scope.onOpen();
                 }                            
             }
@@ -686,6 +689,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                 
                 // close callback                
                 $timeout( function() {
+                    $scope.isOpen = false;
                     $scope.onClose();
                 }, 0 );
 
@@ -977,7 +981,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                 'ng-click="toggleCheckboxes( $event ); refreshSelectedItems(); refreshButton(); prepareGrouping; prepareIndex();"' +
                 'ng-bind-html="varButtonLabel">' +
             '</button>' +
-            '<div class="checkboxLayer">' +
+            '<div ng-if="isOpen" class="checkboxLayer">' +
 
                 '<div class="helperContainer" ng-if="displayHelper( \'filter\' ) || displayHelper( \'all\' ) || displayHelper( \'none\' ) || displayHelper( \'reset\' )">' +
                     '<div class="line" ng-if="displayHelper( \'all\' ) || displayHelper( \'none\' ) || displayHelper( \'reset\' )">' +
