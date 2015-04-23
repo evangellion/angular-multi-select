@@ -907,11 +907,11 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
             // configurable button labels
             if ( typeof attrs.translation !== 'undefined' ) {
-                $scope.lang.selectAll       = $sce.trustAsHtml( icon.selectAll  + '&nbsp;&nbsp;' + $scope.translation.selectAll );
-                $scope.lang.selectNone      = $sce.trustAsHtml( icon.selectNone + '&nbsp;&nbsp;' + $scope.translation.selectNone );
-                $scope.lang.reset           = $sce.trustAsHtml( icon.reset      + '&nbsp;&nbsp;' + $scope.translation.reset );
-                $scope.lang.search          = $scope.translation.search;
-                $scope.lang.nothingSelected = $sce.trustAsHtml( $scope.translation.nothingSelected );
+                $scope.lang.selectAll       = $sce.trustAsHtml( icon.selectAll  + '&nbsp;&nbsp;' + __($scope.translation.selectAll) );
+                $scope.lang.selectNone      = $sce.trustAsHtml( icon.selectNone + '&nbsp;&nbsp;' + __($scope.translation.selectNone) );
+                $scope.lang.reset           = $sce.trustAsHtml( icon.reset      + '&nbsp;&nbsp;' + __($scope.translation.reset) );
+                $scope.lang.search          = __($scope.translation.search);
+                $scope.lang.nothingSelected = $sce.trustAsHtml( __($scope.translation.nothingSelected) );
             }
             else {
                 $scope.lang.selectAll       = $sce.trustAsHtml( icon.selectAll  + '&nbsp;&nbsp;Select All' );
